@@ -1,0 +1,12 @@
+[Unit]
+Description=Save power by disabling your monitor when you're not using it
+After=multi-user.target
+
+[Service]
+Type=idle
+Environment="DISPLAY=:0"
+Environment="XAUTHORITY=/home/pi/.Xauthority"
+ExecStart=/usr/bin/python3 /usr/local/bin/monitor-manager-start.py
+
+[Install]
+WantedBy=graphical.target
