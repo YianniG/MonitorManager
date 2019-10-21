@@ -3,7 +3,7 @@ import subprocess
 import time
 import datetime
 
-enabledTimeRange = [(7, 10), (19, 22)]
+enabledTimeRange = [(7, 10), (19, 22), (23, 24)]
 check_period_mins = 10
 
 def monitorOn():
