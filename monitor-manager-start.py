@@ -7,7 +7,7 @@ enabledTimeRange = [(7, 10), (19, 22)]
 check_period_mins = 10
 
 def monitorOn():
-    os.system("tvservice -p && DISPLAY=:0 xset dpms force on")
+    os.system("tvservice -p")
 
 def monitorOff():
     os.system("tvservice -o")
