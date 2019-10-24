@@ -8,6 +8,7 @@ check_period_mins = 10
 
 def monitorOn():
     os.system("tvservice -p")
+    os.system("xset -display :0 s off -dpms")
 
 def monitorOff():
     os.system("tvservice -o")
@@ -18,6 +19,12 @@ def shouldMonitorBeOn():
     for timeRange in enabledTimeRange:
         shouldBeOn = shouldBeOn or (currentHour >= timeRange[0] and currentHour <= timeRange[1])
     return shouldBeOn
+
+# Turn off dpms
+os.system("xset -display :0 s off -dpms")
+os.system("xset -display :0 s noblank")
+os.system("xset -display :0 s noexpose")
+os.system("xset -display :0 s 0")
 
 while True:
     if(shouldMonitorBeOn()):
