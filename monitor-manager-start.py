@@ -3,8 +3,8 @@ import subprocess
 import time
 import datetime
 
-enabledTimeRange = [(7, 10), (19, 22), (23, 24)]
-check_period_mins = 10
+enabledTimeRange = [(7, 10), (20, 23)]
+check_period_mins = 9 # monitor times out after 10 mins
 
 def monitorOn():
     os.system("tvservice -p")
