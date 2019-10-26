@@ -3,7 +3,9 @@ import subprocess
 import time
 import datetime
 
-enabledTimeRange = [(7, 10), (20, 23)]
+enabledWeekdayTimeRange = [(7, 10)]
+enabledWeekendTimeRange = [(9,11), (16, 19)]
+
 check_period_mins = 9 # monitor times out after 10 mins
 
 def monitorOn():
@@ -15,7 +17,11 @@ def monitorOff():
     os.system("tvservice -o")
 
 def shouldMonitorBeOn():
-    currentHour = datetime.datetime.now().hour
+    currentDateTime = datetime.datetime.now()
+    currentHour = currentDateTime.hour
+    isWeekday = currentDateTime.weekday() < 5
+    enabledTimeRange = enabledWeekdayTimeRange if isWeekday else enabledWeekendTimeRange
+
     shouldBeOn = False
     for timeRange in enabledTimeRange:
         shouldBeOn = shouldBeOn or (currentHour >= timeRange[0] and currentHour <= timeRange[1])
